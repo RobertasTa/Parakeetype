@@ -15,11 +15,11 @@ configure<ApplicationExtension> {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "org.schabi.parakeetype"
+        applicationId = "io.github.robertasta.parakeetype_lt"  // Lithuanian build (Android LT), lives next to the F-Droid Parakeetype
         minSdk = 31
         targetSdk = 37
         versionCode = 130
-        versionName = "0.5.0"
+        versionName = "0.5.0-lt2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

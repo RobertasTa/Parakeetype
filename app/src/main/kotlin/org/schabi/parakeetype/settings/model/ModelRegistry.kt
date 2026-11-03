@@ -58,7 +58,7 @@ object ModelRegistry {
 
     //    val all: List<ModelInfo> = listOf(parakeetUltra, voxtralMini, whisperLargeV3Turbo)
     val all: List<ModelInfo> =
-        listOf(parakeetUltra, parakeetLithuanian) // for now removed voxtralMini and whisperLargeV3Turbo as I could not get it to run on-device within reasonable resource limits
+        listOf(parakeetLithuanian, parakeetUltra) // Lithuanian build: Lithuanian first. For now removed voxtralMini and whisperLargeV3Turbo as I could not get it to run on-device within reasonable resource limits
 
     private val byId: Map<ModelId, ModelInfo> = all.associateBy { it.id }
 
@@ -71,7 +71,7 @@ object ModelRegistry {
 // (separate decoder / joiner, 640-dim encoder output).
 private val parakeetUltra = ModelInfo(
     id = ModelId.PARAKEET_ULTRA,
-    displayName = "Parakeet Ultra (Default)",
+    displayName = "Parakeet Ultra",
     description = "NVIDIA's Parakeet TDT v3 further trained by Moondream, for on-device ASR in English " +
             "and 24 other european languages like DE, FR, ES, IT, RU etc. Robust against background " +
             "noise, very fast and compact - the recommended choice for most devices. " +
@@ -95,14 +95,14 @@ private val parakeetUltra = ModelInfo(
 // decoder / joiner) so it runs on ParakeetEngine unchanged. Vocabulary 8196 + blank, 5 durations.
 private val parakeetLithuanian = ModelInfo(
     id = ModelId.PARAKEET_LITHUANIAN,
-    displayName = "Parakeet Lithuanian",
+    displayName = "Parakeet Lithuanian (Default)",
     description = "Parakeet TDT v3 fine-tuned for Lithuanian (kmynas v4 by Kristijonas Jakubsonas, " +
             "trained on the LIEPA-3 corpus). Recognises Lithuanian far better than the default model; " +
             "for other languages use the default model. " +
             "The archive also contains the Silero VAD model.",
     approximateSizeMb = 910,
     // Converted from https://huggingface.co/kristijonas/kmynas-parakeet-lt-v4; the archive's NOTICE.txt lists the changes.
-    archiveUrl = "https://github.com/RobertasTa/android-lt/releases/tag/v1.1.0",
+    archiveUrl = "https://github.com/RobertasTa/android-lt/releases/latest/download/parakeet-lt-kmynas-int8.zip",  // the browser downloads it at once
     files = listOf(
         ModelFile("encoder.int8.onnx", "8f4dafb7d62ae117dc5f1133d44457b6ae8d4f91e6d899588581a519f14319dc"),
         ModelFile("decoder.int8.onnx", "78246a6d979ddecf47b3c66b2c332a32cb60abef75b019692b78f2bcb3d9aad2"),

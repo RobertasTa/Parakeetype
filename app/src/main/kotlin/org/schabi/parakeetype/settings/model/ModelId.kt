@@ -18,7 +18,7 @@ enum class ModelId(val storageDirName: String) {
 
     companion object {
         /** The model used when no preference has been saved yet. */
-        val DEFAULT: ModelId = PARAKEET_ULTRA
+        val DEFAULT: ModelId = PARAKEET_LITHUANIAN  // Lithuanian build (Android LT): active as soon as it is imported
 
         /** Returns the [ModelId] whose [storageDirName] matches [name], or [DEFAULT] if none found. */
         fun fromName(name: String): ModelId =
